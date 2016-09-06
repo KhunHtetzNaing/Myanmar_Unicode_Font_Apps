@@ -770,6 +770,7 @@ containing a value of this type.
         public static final int wallet_buy_button_place_holder=0x7f06002a;
     }
     public static final class style {
+        public static final int AppTheme=0x7f050007;
         /**  Preview application theme. 
          */
         public static final int Theme_AppInvite_Preview=0x7f050002;

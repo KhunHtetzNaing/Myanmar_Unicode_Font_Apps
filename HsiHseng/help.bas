@@ -21,7 +21,7 @@ Sub Globals
 	Dim p As PhoneIntents 
 	Dim lstOne As ListView 
     Dim AdView2 As AdView
-	Dim mm As Typeface : mm = Typeface.LoadFromAssets("Hsi-Hseng.ttf")
+	Private mm As Typeface : mm = Typeface.LoadFromAssets("Hsi-Hseng.ttf")
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -46,7 +46,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	lblName.Initialize ("")
 	lblName.Background = bg
 	lblName.Gravity = Gravity.CENTER 
-	lblName.Text = "အောက်ပါနေရာများတွင် အကူအညီတောင်းယူနိုင်ပါသည်။"
+	lblName.Text = "အောက်ပါနေရာများတွင်" &CRLF& "အကူအညီတောင်းယူနိုင်ပါသည်။"
 	lblName.Typeface = mm
 	lblName.TextSize = 13
 	lblName.TextColor = Colors.White 
@@ -54,26 +54,20 @@ Sub Activity_Create(FirstTime As Boolean)
 	lblName.Height = su.MeasureMultilineTextHeight (lblName, lblName.Text ) + 5dip
 	
 	
-	Dim c As ColorDrawable 
-	c.Initialize (Colors.White , 10dip )
 	lstOne.Initialize ("lstOnes")
-	lstOne.Background = c
-	lstOne.SingleLineLayout .Label.TextSize = 12
-	lstOne.SingleLineLayout .Label .TextColor = Colors.DarkGray 
-	lstOne.SingleLineLayout .Label .Gravity = Gravity.CENTER 
-	lstOne.SingleLineLayout .ItemHeight = 40dip
-	lstOne.AddSingleLine2 ("Myanmar Unicode Area"&CRLF&"https://www.facebook.com/groups/mmUnicode/", 1)
-	lstOne.AddSingleLine2 ("Myanmar PaOh Unicode Area"&CRLF&"https://www.facebook.com/groups/PaOhUnicode/",2)
-	lstOne.AddSingleLine2 ("ပအိုဝ်း IT လူငယ်များ"&CRLF&"https://www.facebook.com/PaOhITYouth", 3)
-	Activity.AddView ( lstOne,3%x, (lblName.Top+lblName.Height)+2%y , 94%x,35%y)
+	lstOne.TwoLinesAndBitmap .Label .TextColor = Colors.Black
+	lstOne.AddTwoLinesAndBitmap("Myanmar Unicode Area","www.fb.com/groups/mmUnicode",LoadBitmap(File.DirAssets,"mua.png"))
+	lstOne.AddTwoLinesAndBitmap("Myanmar PaOh Unicode Area","www.fb.com/groups/PaOhUnicode",LoadBitmap(File.DirAssets,"mpua.jpeg"))
+	lstOne.AddTwoLinesAndBitmap("ပအိုဝ်း IT လူငယ်များ","www.fb.com/PaOhITYouth",LoadBitmap(File.DirAssets,"paohityouth.jpg"))
+	Activity.AddView( lstOne,3%x, (lblName.Top+lblName.Height)+5%y , 94%x,35%y)
 	
 	Dim lblCredit As Label 
 	lblCredit.Initialize ("lblCredit")
 	lblCredit.TextColor = Colors.RGB (48,154,6)
-	lblCredit.TextSize = 13
+	lblCredit.TextSize = 15
 	lblCredit.Gravity = Gravity.CENTER 
 	lblCredit.Text = "Special Thanks Khon Soe Zaw Thu"
-	Activity.AddView (lblCredit, 10dip, 310dip, 100%x - 20dip, 50dip)
+	Activity.AddView(lblCredit, 10dip,(lstOne.Top+lstOne.Height)+5%y, 100%x - 20dip, 50dip)
 	lblCredit.Height = su.MeasureMultilineTextHeight (lblCredit, lblCredit.Text )
 		
 End Sub
@@ -100,14 +94,18 @@ Sub Activity_Pause (UserClosed As Boolean)
 End Sub
 
 Sub lstOnes_ItemClick (Position As Int, Value As Object)
-     Select Value
-	 	Case 1
-			StartActivity(p.OpenBrowser("https://www.facebook.com/groups/mmUnicode/"))
-			Case 2
-				StartActivity(p.OpenBrowser("https://www.facebook.com/groups/PaOhUnicode/"))
-	 			Case 3
-				   StartActivity(p.OpenBrowser ("https://www.facebook.com/PaOhITYouth"))
-	 End Select
+     If Value = "Myanmar Unicode Area" Then
+	 	Dim p As PhoneIntents
+		StartActivity(p.OpenBrowser("https://www.facebook.com/groups/mmUnicode"))
+End If
+      If Value = "Myanmar PaOh Unicode Area" Then
+	  	Dim p As PhoneIntents
+		StartActivity(p.OpenBrowser("https://www.facebook.com/groups/PaOhUnicode"))
+End If
+      If Value = "ပအိုဝ်း IT လူငယ်များ" Then
+	  	Dim p As PhoneIntents
+		StartActivity(p.OpenBrowser("https://www.facebook.com/PaOhITYouth"))
+End If
 End Sub
 
 

@@ -59,7 +59,7 @@ public class help extends Activity implements B4AActivity{
 		setContentView(layout);
 		afterFirstLayout = false;
         WaitForLayout wl = new WaitForLayout();
-        if (anywheresoftware.b4a.objects.ServiceHelper.StarterHelper.startFromActivity(processBA, wl, false))
+        if (anywheresoftware.b4a.objects.ServiceHelper.StarterHelper.startFromActivity(processBA, wl, true))
 		    BA.handler.postDelayed(wl, 5);
 
 	}
@@ -324,8 +324,9 @@ public anywheresoftware.b4a.phone.Phone.PhoneIntents _p = null;
 public anywheresoftware.b4a.objects.ListViewWrapper _lstone = null;
 public anywheresoftware.b4a.admobwrapper.AdViewWrapper _adview2 = null;
 public anywheresoftware.b4a.keywords.constants.TypefaceWrapper _mm = null;
+public com.drive.license2.australia _australia = null;
 public com.htetznaing.hsihsengfont.main _main = null;
-public com.htetznaing.hsihsengfont.starter _starter = null;
+public com.htetznaing.hsihsengfont.tutorial _tutorial = null;
 
 public static void initializeProcessGlobals() {
              try {
@@ -338,7 +339,6 @@ public static String  _activity_create(boolean _firsttime) throws Exception{
 anywheresoftware.b4a.objects.ImageViewWrapper _imvlogo = null;
 anywheresoftware.b4a.objects.LabelWrapper _lblname = null;
 anywheresoftware.b4a.objects.drawable.ColorDrawable _bg = null;
-anywheresoftware.b4a.objects.drawable.ColorDrawable _c = null;
 anywheresoftware.b4a.objects.LabelWrapper _lblcredit = null;
  //BA.debugLineNum = 22;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
  //BA.debugLineNum = 25;BA.debugLine="Activity.Title = \"About\"";
@@ -373,8 +373,8 @@ _lblname.Initialize(mostCurrent.activityBA,"");
 _lblname.setBackground((android.graphics.drawable.Drawable)(_bg.getObject()));
  //BA.debugLineNum = 43;BA.debugLine="lblName.Gravity = Gravity.CENTER";
 _lblname.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER);
- //BA.debugLineNum = 44;BA.debugLine="lblName.Text = \"အောက်ပါနေရာများတွင် အကူအညီတောင်းယ";
-_lblname.setText((Object)("အောက်ပါနေရာများတွင် အကူအညီတောင်းယူနိုင်ပါသည်။"));
+ //BA.debugLineNum = 44;BA.debugLine="lblName.Text = \"အောက်ပါနေရာများတွင်\" &CRLF& \"အကူအ";
+_lblname.setText((Object)("အောက်ပါနေရာများတွင်"+anywheresoftware.b4a.keywords.Common.CRLF+"အကူအညီတောင်းယူနိုင်ပါသည်။"));
  //BA.debugLineNum = 45;BA.debugLine="lblName.Typeface = mm";
 _lblname.setTypeface((android.graphics.Typeface)(mostCurrent._mm.getObject()));
  //BA.debugLineNum = 46;BA.debugLine="lblName.TextSize = 13";
@@ -385,78 +385,66 @@ _lblname.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.White);
 mostCurrent._activity.AddView((android.view.View)(_lblname.getObject()),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (10),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (130)),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (80),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)));
  //BA.debugLineNum = 49;BA.debugLine="lblName.Height = su.MeasureMultilineTextHeight (l";
 _lblname.setHeight((int) (mostCurrent._su.MeasureMultilineTextHeight((android.widget.TextView)(_lblname.getObject()),_lblname.getText())+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5))));
- //BA.debugLineNum = 52;BA.debugLine="Dim c As ColorDrawable";
-_c = new anywheresoftware.b4a.objects.drawable.ColorDrawable();
- //BA.debugLineNum = 53;BA.debugLine="c.Initialize (Colors.White , 10dip )";
-_c.Initialize(anywheresoftware.b4a.keywords.Common.Colors.White,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)));
- //BA.debugLineNum = 54;BA.debugLine="lstOne.Initialize (\"lstOnes\")";
+ //BA.debugLineNum = 52;BA.debugLine="lstOne.Initialize (\"lstOnes\")";
 mostCurrent._lstone.Initialize(mostCurrent.activityBA,"lstOnes");
- //BA.debugLineNum = 55;BA.debugLine="lstOne.Background = c";
-mostCurrent._lstone.setBackground((android.graphics.drawable.Drawable)(_c.getObject()));
- //BA.debugLineNum = 56;BA.debugLine="lstOne.SingleLineLayout .Label.TextSize = 12";
-mostCurrent._lstone.getSingleLineLayout().Label.setTextSize((float) (12));
- //BA.debugLineNum = 57;BA.debugLine="lstOne.SingleLineLayout .Label .TextColor = Color";
-mostCurrent._lstone.getSingleLineLayout().Label.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.DarkGray);
- //BA.debugLineNum = 58;BA.debugLine="lstOne.SingleLineLayout .Label .Gravity = Gravity";
-mostCurrent._lstone.getSingleLineLayout().Label.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER);
- //BA.debugLineNum = 59;BA.debugLine="lstOne.SingleLineLayout .ItemHeight = 40dip";
-mostCurrent._lstone.getSingleLineLayout().setItemHeight(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 60;BA.debugLine="lstOne.AddSingleLine2 (\"Myanmar Unicode Area\"&CRL";
-mostCurrent._lstone.AddSingleLine2("Myanmar Unicode Area"+anywheresoftware.b4a.keywords.Common.CRLF+"https://www.facebook.com/groups/mmUnicode/",(Object)(1));
- //BA.debugLineNum = 61;BA.debugLine="lstOne.AddSingleLine2 (\"Myanmar PaOh Unicode Area";
-mostCurrent._lstone.AddSingleLine2("Myanmar PaOh Unicode Area"+anywheresoftware.b4a.keywords.Common.CRLF+"https://www.facebook.com/groups/PaOhUnicode/",(Object)(2));
- //BA.debugLineNum = 62;BA.debugLine="lstOne.AddSingleLine2 (\"ပအိုဝ်း IT လူငယ်များ\"&CRL";
-mostCurrent._lstone.AddSingleLine2("ပအိုဝ်း IT လူငယ်များ"+anywheresoftware.b4a.keywords.Common.CRLF+"https://www.facebook.com/PaOhITYouth",(Object)(3));
- //BA.debugLineNum = 63;BA.debugLine="Activity.AddView ( lstOne,3%x, (lblName.Top+lblNa";
-mostCurrent._activity.AddView((android.view.View)(mostCurrent._lstone.getObject()),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (3),mostCurrent.activityBA),(int) ((_lblname.getTop()+_lblname.getHeight())+anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (2),mostCurrent.activityBA)),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (94),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (35),mostCurrent.activityBA));
- //BA.debugLineNum = 65;BA.debugLine="Dim lblCredit As Label";
+ //BA.debugLineNum = 53;BA.debugLine="lstOne.TwoLinesAndBitmap .Label .TextColor = Colo";
+mostCurrent._lstone.getTwoLinesAndBitmap().Label.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
+ //BA.debugLineNum = 54;BA.debugLine="lstOne.AddTwoLinesAndBitmap(\"Myanmar Unicode Area";
+mostCurrent._lstone.AddTwoLinesAndBitmap("Myanmar Unicode Area","www.fb.com/groups/mmUnicode",(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"mua.png").getObject()));
+ //BA.debugLineNum = 55;BA.debugLine="lstOne.AddTwoLinesAndBitmap(\"Myanmar PaOh Unicode";
+mostCurrent._lstone.AddTwoLinesAndBitmap("Myanmar PaOh Unicode Area","www.fb.com/groups/PaOhUnicode",(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"mpua.jpeg").getObject()));
+ //BA.debugLineNum = 56;BA.debugLine="lstOne.AddTwoLinesAndBitmap(\"ပအိုဝ်း IT လူငယ်များ";
+mostCurrent._lstone.AddTwoLinesAndBitmap("ပအိုဝ်း IT လူငယ်များ","www.fb.com/PaOhITYouth",(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"paohityouth.jpg").getObject()));
+ //BA.debugLineNum = 57;BA.debugLine="Activity.AddView( lstOne,3%x, (lblName.Top+lblNam";
+mostCurrent._activity.AddView((android.view.View)(mostCurrent._lstone.getObject()),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (3),mostCurrent.activityBA),(int) ((_lblname.getTop()+_lblname.getHeight())+anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (5),mostCurrent.activityBA)),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (94),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (35),mostCurrent.activityBA));
+ //BA.debugLineNum = 59;BA.debugLine="Dim lblCredit As Label";
 _lblcredit = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 66;BA.debugLine="lblCredit.Initialize (\"lblCredit\")";
+ //BA.debugLineNum = 60;BA.debugLine="lblCredit.Initialize (\"lblCredit\")";
 _lblcredit.Initialize(mostCurrent.activityBA,"lblCredit");
- //BA.debugLineNum = 67;BA.debugLine="lblCredit.TextColor = Colors.RGB (48,154,6)";
+ //BA.debugLineNum = 61;BA.debugLine="lblCredit.TextColor = Colors.RGB (48,154,6)";
 _lblcredit.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (48),(int) (154),(int) (6)));
- //BA.debugLineNum = 68;BA.debugLine="lblCredit.TextSize = 13";
-_lblcredit.setTextSize((float) (13));
- //BA.debugLineNum = 69;BA.debugLine="lblCredit.Gravity = Gravity.CENTER";
+ //BA.debugLineNum = 62;BA.debugLine="lblCredit.TextSize = 15";
+_lblcredit.setTextSize((float) (15));
+ //BA.debugLineNum = 63;BA.debugLine="lblCredit.Gravity = Gravity.CENTER";
 _lblcredit.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER);
- //BA.debugLineNum = 70;BA.debugLine="lblCredit.Text = \"Special Thanks Khon Soe Zaw Thu";
+ //BA.debugLineNum = 64;BA.debugLine="lblCredit.Text = \"Special Thanks Khon Soe Zaw Thu";
 _lblcredit.setText((Object)("Special Thanks Khon Soe Zaw Thu"));
- //BA.debugLineNum = 71;BA.debugLine="Activity.AddView (lblCredit, 10dip, 310dip, 100%x";
-mostCurrent._activity.AddView((android.view.View)(_lblcredit.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (310)),(int) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA)-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)));
- //BA.debugLineNum = 72;BA.debugLine="lblCredit.Height = su.MeasureMultilineTextHeight";
+ //BA.debugLineNum = 65;BA.debugLine="Activity.AddView(lblCredit, 10dip,(lstOne.Top+lst";
+mostCurrent._activity.AddView((android.view.View)(_lblcredit.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),(int) ((mostCurrent._lstone.getTop()+mostCurrent._lstone.getHeight())+anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (5),mostCurrent.activityBA)),(int) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA)-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)));
+ //BA.debugLineNum = 66;BA.debugLine="lblCredit.Height = su.MeasureMultilineTextHeight";
 _lblcredit.setHeight(mostCurrent._su.MeasureMultilineTextHeight((android.widget.TextView)(_lblcredit.getObject()),_lblcredit.getText()));
- //BA.debugLineNum = 74;BA.debugLine="End Sub";
+ //BA.debugLineNum = 68;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 93;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 95;BA.debugLine="End Sub";
+ //BA.debugLineNum = 87;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 89;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 89;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 91;BA.debugLine="End Sub";
+ //BA.debugLineNum = 83;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 85;BA.debugLine="End Sub";
 return "";
 }
 public static String  _ad2_adscreendismissed() throws Exception{
- //BA.debugLineNum = 82;BA.debugLine="Sub Ad2_AdScreenDismissed";
- //BA.debugLineNum = 83;BA.debugLine="Log(\"screen dismissed\")";
+ //BA.debugLineNum = 76;BA.debugLine="Sub Ad2_AdScreenDismissed";
+ //BA.debugLineNum = 77;BA.debugLine="Log(\"screen dismissed\")";
 anywheresoftware.b4a.keywords.Common.Log("screen dismissed");
- //BA.debugLineNum = 84;BA.debugLine="End Sub";
-return "";
-}
-public static String  _ad2_failedtoreceivead(String _errorcode) throws Exception{
- //BA.debugLineNum = 76;BA.debugLine="Sub Ad2_FailedToReceiveAd (ErrorCode As String)";
- //BA.debugLineNum = 77;BA.debugLine="Log(\"failed: \" & ErrorCode)";
-anywheresoftware.b4a.keywords.Common.Log("failed: "+_errorcode);
  //BA.debugLineNum = 78;BA.debugLine="End Sub";
 return "";
 }
+public static String  _ad2_failedtoreceivead(String _errorcode) throws Exception{
+ //BA.debugLineNum = 70;BA.debugLine="Sub Ad2_FailedToReceiveAd (ErrorCode As String)";
+ //BA.debugLineNum = 71;BA.debugLine="Log(\"failed: \" & ErrorCode)";
+anywheresoftware.b4a.keywords.Common.Log("failed: "+_errorcode);
+ //BA.debugLineNum = 72;BA.debugLine="End Sub";
+return "";
+}
 public static String  _ad2_receivead() throws Exception{
- //BA.debugLineNum = 79;BA.debugLine="Sub Ad2_ReceiveAd";
- //BA.debugLineNum = 80;BA.debugLine="Log(\"received\")";
+ //BA.debugLineNum = 73;BA.debugLine="Sub Ad2_ReceiveAd";
+ //BA.debugLineNum = 74;BA.debugLine="Log(\"received\")";
 anywheresoftware.b4a.keywords.Common.Log("received");
- //BA.debugLineNum = 81;BA.debugLine="End Sub";
+ //BA.debugLineNum = 75;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -469,39 +457,44 @@ mostCurrent._p = new anywheresoftware.b4a.phone.Phone.PhoneIntents();
 mostCurrent._lstone = new anywheresoftware.b4a.objects.ListViewWrapper();
  //BA.debugLineNum = 18;BA.debugLine="Dim AdView2 As AdView";
 mostCurrent._adview2 = new anywheresoftware.b4a.admobwrapper.AdViewWrapper();
- //BA.debugLineNum = 19;BA.debugLine="Dim mm As Typeface : mm = Typeface.LoadFromAssets";
+ //BA.debugLineNum = 19;BA.debugLine="Private mm As Typeface : mm = Typeface.LoadFromAs";
 mostCurrent._mm = new anywheresoftware.b4a.keywords.constants.TypefaceWrapper();
- //BA.debugLineNum = 19;BA.debugLine="Dim mm As Typeface : mm = Typeface.LoadFromAssets";
+ //BA.debugLineNum = 19;BA.debugLine="Private mm As Typeface : mm = Typeface.LoadFromAs";
 mostCurrent._mm.setObject((android.graphics.Typeface)(anywheresoftware.b4a.keywords.Common.Typeface.LoadFromAssets("Hsi-Hseng.ttf")));
  //BA.debugLineNum = 20;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lblcredit_click() throws Exception{
- //BA.debugLineNum = 86;BA.debugLine="Sub lblCredit_Click";
- //BA.debugLineNum = 87;BA.debugLine="StartActivity(p.OpenBrowser (\"https://www.faceboo";
+ //BA.debugLineNum = 80;BA.debugLine="Sub lblCredit_Click";
+ //BA.debugLineNum = 81;BA.debugLine="StartActivity(p.OpenBrowser (\"https://www.faceboo";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._p.OpenBrowser("https://www.facebook.com/khonsoezawthu")));
- //BA.debugLineNum = 88;BA.debugLine="End Sub";
+ //BA.debugLineNum = 82;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lstones_itemclick(int _position,Object _value) throws Exception{
- //BA.debugLineNum = 97;BA.debugLine="Sub lstOnes_ItemClick (Position As Int, Value As O";
- //BA.debugLineNum = 98;BA.debugLine="Select Value";
-switch (BA.switchObjectToInt(_value,(Object)(1),(Object)(2),(Object)(3))) {
-case 0: {
- //BA.debugLineNum = 100;BA.debugLine="StartActivity(p.OpenBrowser(\"https://www.facebo";
-anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._p.OpenBrowser("https://www.facebook.com/groups/mmUnicode/")));
- break; }
-case 1: {
- //BA.debugLineNum = 102;BA.debugLine="StartActivity(p.OpenBrowser(\"https://www.faceb";
-anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._p.OpenBrowser("https://www.facebook.com/groups/PaOhUnicode/")));
- break; }
-case 2: {
- //BA.debugLineNum = 104;BA.debugLine="StartActivity(p.OpenBrowser (\"https://www.f";
+ //BA.debugLineNum = 91;BA.debugLine="Sub lstOnes_ItemClick (Position As Int, Value As O";
+ //BA.debugLineNum = 92;BA.debugLine="If Value = \"Myanmar Unicode Area\" Then";
+if ((_value).equals((Object)("Myanmar Unicode Area"))) { 
+ //BA.debugLineNum = 93;BA.debugLine="Dim p As PhoneIntents";
+mostCurrent._p = new anywheresoftware.b4a.phone.Phone.PhoneIntents();
+ //BA.debugLineNum = 94;BA.debugLine="StartActivity(p.OpenBrowser(\"https://www.faceboo";
+anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._p.OpenBrowser("https://www.facebook.com/groups/mmUnicode")));
+ };
+ //BA.debugLineNum = 96;BA.debugLine="If Value = \"Myanmar PaOh Unicode Area\" Then";
+if ((_value).equals((Object)("Myanmar PaOh Unicode Area"))) { 
+ //BA.debugLineNum = 97;BA.debugLine="Dim p As PhoneIntents";
+mostCurrent._p = new anywheresoftware.b4a.phone.Phone.PhoneIntents();
+ //BA.debugLineNum = 98;BA.debugLine="StartActivity(p.OpenBrowser(\"https://www.faceboo";
+anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._p.OpenBrowser("https://www.facebook.com/groups/PaOhUnicode")));
+ };
+ //BA.debugLineNum = 100;BA.debugLine="If Value = \"ပအိုဝ်း IT လူငယ်များ\" Then";
+if ((_value).equals((Object)("ပအိုဝ်း IT လူငယ်များ"))) { 
+ //BA.debugLineNum = 101;BA.debugLine="Dim p As PhoneIntents";
+mostCurrent._p = new anywheresoftware.b4a.phone.Phone.PhoneIntents();
+ //BA.debugLineNum = 102;BA.debugLine="StartActivity(p.OpenBrowser(\"https://www.faceboo";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._p.OpenBrowser("https://www.facebook.com/PaOhITYouth")));
- break; }
-}
-;
- //BA.debugLineNum = 106;BA.debugLine="End Sub";
+ };
+ //BA.debugLineNum = 104;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{

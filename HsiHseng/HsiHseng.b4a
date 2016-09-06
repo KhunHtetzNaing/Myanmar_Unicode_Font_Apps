@@ -1,28 +1,33 @@
 ﻿Version=6
 NumberOfModules=2
 Module1=help
-Module2=Starter
+Module2=Tutorial
 Build1=Default,com.htetznaing.hsihsengfont
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="19"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetApplicationAttribute(android:theme, "@android:style/Theme.Material")~\n~'End of default text.~\n~'AdMob~\n~AddApplicationText(~\n~<meta-data android:name="com.google.android.gms.version"~\n~  android:value="@integer/google_play_services_version"/>~\n~<activity android:name="com.google.android.gms.ads.AdActivity"~\n~  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>~\n~)~\n~'End of AdMob~\n~
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="23"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~'AdMob~\n~AddApplicationText(~\n~<meta-data android:name="com.google.android.gms.version"~\n~  android:value="@integer/google_play_services_version"/>~\n~<activity android:name="com.google.android.gms.ads.AdActivity"~\n~  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>~\n~)~\n~'End of AdMob~\n~SetApplicationAttribute("android:theme", "@style/AppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~  <style name="AppTheme" parent="android:Theme.Material.Light">~\n~  <item name="android:colorPrimary">#00C853</item>~\n~  <item name="android:colorPrimaryDark">#2196F3</item>~\n~  <item name="android:colorAccent">#FFF8F8F8</item>~\n~  </style>~\n~</resources>~\n~)~\n~
 IconFile=
-NumberOfFiles=3
+NumberOfFiles=6
 File1=Hsi Hseng(iFont).apk
 File2=Hsi-Hseng.ttf
 File3=icon.png
-NumberOfLibraries=4
+File4=mpua.jpeg
+File5=mua.png
+File6=paohityouth.jpg
+NumberOfLibraries=6
 Library1=core
 Library2=phone
 Library3=stringutils
 Library4=admob
+Library5=animation
+Library6=hpui
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: Hsi Hseng Font
-	#VersionCode: 1
-	#VersionName: 1.0
+	#VersionCode: 3
+	#VersionName: 1.1
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: unspecified
 	#CanInstallToExternalStorage: False
-	#AdditionalRes: C:\Android\SDK\extras\google\google-play-services\libproject\google-play-services_lib\res, com.google.android.gms
+	#AdditionalRes: F:\Android\SDK\extras\google\google-play-services\libproject\google-play-services_lib\res, com.google.android.gms
 #End Region
 #End Region
 
@@ -38,26 +43,28 @@ Sub Process_Globals
 End Sub
 
 Sub Globals
-	Dim b,b2 As Button
-	Dim lb As Label
+	Dim b,b2,b3 As Button
+	Dim lb,slmn As Label
 	Dim bg As ColorDrawable
 	Dim lblfooter As Label
 	Dim AdView1 As AdView
-	Dim Myanmar As Typeface : Myanmar = Typeface.LoadFromAssets("Hsi-Hseng.ttf")
+	Private Myanmar As Typeface : Myanmar = Typeface.LoadFromAssets("Hsi-Hseng.ttf")
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	
+	File.MakeDir(File.DirRootExternal,"HiFont")
+	File.Copy(File.DirAssets,"Hsi-Hseng.ttf",File.DirRootExternal& "/HiFont","HsiHseng.ttf")
+	
 	AdView1.Initialize("Ad1", "ca-app-pub-4173348573252986/9504138953")
-     Activity.AddView(AdView1, 0%x, 70%y, 100%x,30%y)
-     AdView1.LoadAd
-	 
+    Activity.AddView(AdView1, 0%x, 70%y, 100%x,30%y)
+    AdView1.LoadAd
+
 	bg.Initialize(0xFF7AFF99,1)
-	Activity.Background = bg
 	Activity.Title = "Hsi Hseng Font App"
 	
 	lb.Initialize("lb")
-	lb.Text = "ယူနီကုဒ်စနစ်မှန်ကန်စွာအသုံးပြုနေသော" & CRLF & "Font Style ပါရှိသောဖုန်းများအတွက်သာ..." &CRLF&CRLF&"အသုံးပြုနည်း" &CRLF&CRLF& "1. Install Hsi Hseng Font ကိုနှိပ်ပြီး" &CRLF& "Hsi Hseng ဖောင့် App ကို Install လုပ်ပေးပါ။" &CRLF& "2. Install ပြုလုပ်ခြင်းပြီးဆုံးလျှင်" &CRLF& "Change Font ကိုနှိပ်ပြီး Font Style မှာ" &CRLF& "Hsi Hseng(ifont) ကိုရွေးချယ်ပေးလိုက်ပါ။" &CRLF& "အဆင်မပြေမှုများရှိခဲ့လျှင် Help ကိုနှိပ်ပြီး" &CRLF& "အကူညီတောင်းခံနိုင်ပါသည်။"
+	lb.Text = "ယူနီကုဒ်စနစ်မှန်ကန်စွာအသုံးပြုနေသော" & CRLF & "Font Style ပါရှိသောဖုန်းများအတွက်သာ..." &CRLF&CRLF&"အသုံးပြုနည်း" &CRLF&CRLF& "1. Install Hsi Hseng Font ကိုနှိပ်ပြီး" &CRLF& "Hsi Hseng ဖောင့် App ကို Install လုပ်ပေးပါ။" &CRLF& "2. Install ပြုလုပ်ခြင်းပြီးဆုံးလျှင်" &CRLF& "Change Font ကိုနှိပ်ပြီး Font Style မှာ" &CRLF& "Hsi Hseng(ifont) ကိုရွေးချယ်ပေးလိုက်ပါ။" &CRLF& "အဆင်မပြေမှုများရှိခဲ့လျှင် Help ကိုနှိပ်ပြီး" &CRLF& "အကူညီတောင်းခံနိုင်ပါသည်။"
     lb.Gravity = Gravity.CENTER
 	Activity.AddView(lb,2%x,2%y,96%x,40%y)
 	lb.TextSize = 12
@@ -72,14 +79,25 @@ Sub Activity_Create(FirstTime As Boolean)
 	b2.Text = "Change Font"
 	Activity.AddView(b2,10%x,(b.Top+b.Height)+1%y,80%x,10%y)
 	
+	b3.Initialize("b3")
+	b3.Text = "Tutorial"
+	Activity.AddView(b3,10%x,(b2.Top+b2.Height)+1%y,80%x,10%y)
+	
 	Activity.AddMenuItem("Help","help")
 	Activity.AddMenuItem("About","about")
-	
+	Activity.AddMenuItem("Feedback","feedback")
+	Activity.AddMenuItem("Rete App","rate")
+	Activity.AddMenuItem("More App","more")
+	Activity.AddMenuItem("Share App","share")
+
 	lblfooter.Initialize("lblfooter")
 	lblfooter.Text = "Developed By Khun Htetz Naing"
 	lblfooter.TextColor = Colors.Blue
 	lblfooter.Gravity = Gravity.CENTER
 	Activity.AddView(lblfooter,10dip, 100%y - 35dip , 100%x - 20dip ,40dip)
+	
+	slmn.Initialize("slmu")
+	Activity.AddView(slmn,0%x,0%y,10%x,100%y)
 End Sub
 
 Sub help_Click
@@ -97,7 +115,7 @@ End If
 End Sub
 Sub b_Click
 	File.Copy(File.DirAssets,"Hsi Hseng(iFont).apk",File.DirRootExternal,"HsiHseng.apk")
-	AdView1.LoadAd
+'	AdView1.LoadAd
 	Dim i As Intent
     i.Initialize(i.ACTION_VIEW,"file:///"&File.DirRootExternal&"/HsiHseng.apk")
 	i.SetType("application/vnd.android.package-archive")
@@ -106,9 +124,15 @@ Sub b_Click
 End Sub
 
 Sub b2_Click
+	ToastMessageShow("1. Click Font Style Or Font > " &CRLF& "2. Choose Hsi Hseng(iFont)",True)
 	Dim abc As Intent
-abc.Initialize("android.settings.DISPLAY_SETTINGS","")
-StartActivity(abc)
+	abc.Initialize("android.settings.DISPLAY_SETTINGS","")
+	StartActivity(abc)
+End Sub
+
+Sub b3_Click
+	ToastMessageShow("Please wait.. load tutorial..",True)
+	StartActivity(Tutorial)
 End Sub
 
 Sub lblfooter_CLick
@@ -135,9 +159,32 @@ Sub Activity_KeyPress(KeyCode As Int) As Boolean
 
     End If
 	End Sub
-	
-Sub Activity_Resume
 
+Sub feedback_Click
+	Dim p As PhoneIntents
+	StartActivity(p.OpenBrowser("https://www.facebook.com/Khun.Htetz.Naing"))
+End Sub
+
+Sub rate_Click
+		Dim p As PhoneIntents
+		StartActivity(p.OpenBrowser("https://play.google.com/store/apps/details?id=com.htetznaing.hsihsengfont&hl=es"))
+End Sub
+	Sub more_Click
+		Dim p As PhoneIntents
+		StartActivity(p.OpenBrowser("https://play.google.com/store/apps/developer?id=PaOh%20IT%20Youth&hl=es"))
+	End Sub
+	Sub share_Click
+		Dim ShareIt As Intent
+    ShareIt.Initialize (ShareIt.ACTION_SEND,"")
+    ShareIt.SetType ("text/plain")
+    ShareIt.PutExtra ("android.intent.extra.TEXT","'Hsi Hseng' Beautiful Myanmar Font Style Download at Google Play Store: https://play.google.com/store/apps/details?id=com.htetznaing.hsihsengfont&hl=es")
+    ShareIt.PutExtra ("android.intent.extra.SUBJECT","Get Free!!")
+    ShareIt.WrapAsIntentChooser("Share App Via...")
+StartActivity (ShareIt)
+End Sub
+
+Sub Activity_Resume
+	
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
